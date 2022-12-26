@@ -5,6 +5,7 @@ package com.sdjr2.rest_sp5_ztoe.services;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -38,8 +39,12 @@ public class UserService {
 		}
 	}
 
-	public List<User> getUsers() {
-		return this.users;
+	public List<User> getUsers(final String startWith) {
+		if (startWith != null) {
+			return this.users.stream().filter(u -> u.getUsername().startsWith(startWith)).collect(Collectors.toList());
+		} else {
+			return this.users;
+		}
 	}
 
 	public User getUser(final String username) {
