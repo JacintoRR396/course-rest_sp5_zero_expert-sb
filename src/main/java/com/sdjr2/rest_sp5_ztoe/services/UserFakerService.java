@@ -18,6 +18,8 @@ import com.sdjr2.rest_sp5_ztoe.models.UserFaker;
 import jakarta.annotation.PostConstruct;
 
 /**
+ * Service that manages business logic about Users Faker.
+ *
  * @author jroldan
  * @version 1.0
  * @category Service

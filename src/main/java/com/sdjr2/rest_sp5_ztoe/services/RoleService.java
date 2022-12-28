@@ -19,7 +19,7 @@ import com.sdjr2.rest_sp5_ztoe.repositories.RoleRepository;
  *
  * @author jroldan
  * @version 1.0
- * @category Repository
+ * @category Service
  * @since 22/12/27
  */
 @Service

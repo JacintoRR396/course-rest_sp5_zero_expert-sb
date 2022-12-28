@@ -5,8 +5,6 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 
 /**
@@ -15,7 +13,7 @@ import jakarta.persistence.Table;
  * @author jroldan
  * @version 1.0
  * @category Entity
- * @since 22/12/26
+ * @since 22/12/27
  */
 @Entity
 @Table(name = "users")
@@ -31,10 +29,6 @@ public class UserEntity {
 
 	@Column(name = "password")
 	private String password;
-
-	@OneToOne
-	@JoinColumn(name = "profile_id", referencedColumnName = "id")
-	private ProfileEntity profile;
 
 	public Integer getId() {
 		return this.id;
@@ -58,14 +52,6 @@ public class UserEntity {
 
 	public void setPassword(final String password) {
 		this.password = password;
-	}
-
-	public ProfileEntity getProfile() {
-		return this.profile;
-	}
-
-	public void setProfile(final ProfileEntity profile) {
-		this.profile = profile;
 	}
 
 	@Override

@@ -1,6 +1,6 @@
 package com.sdjr2.rest_sp5_ztoe.repositories;
 
-import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.jpa.repository.JpaRepository;
 
 import com.sdjr2.rest_sp5_ztoe.entities.UserEntity;
 
@@ -12,6 +12,6 @@ import com.sdjr2.rest_sp5_ztoe.entities.UserEntity;
  * @category Repository
  * @since 22/12/27
  */
-public interface UserRepository extends CrudRepository<UserEntity, Integer> {
+public interface UserRepository extends JpaRepository<UserEntity, Integer> {
 
 }

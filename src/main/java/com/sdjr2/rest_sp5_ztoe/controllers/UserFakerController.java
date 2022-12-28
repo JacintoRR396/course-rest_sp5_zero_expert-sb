@@ -30,7 +30,7 @@ import com.sdjr2.rest_sp5_ztoe.services.UserFakerService;
  * @since 22/12/26
  */
 @RestController
-@RequestMapping("/users")
+@RequestMapping("/users/faker")
 public class UserFakerController {
 
 	@Autowired
