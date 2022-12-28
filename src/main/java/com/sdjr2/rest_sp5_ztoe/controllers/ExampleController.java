@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
+ * Controller to manage Examples.
+ *
  * @author jroldan
  * @version 1.0
  * @category Controller

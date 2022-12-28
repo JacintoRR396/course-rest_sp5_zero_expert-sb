@@ -18,10 +18,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.sdjr2.rest_sp5_ztoe.models.User;
-import com.sdjr2.rest_sp5_ztoe.services.UserService;
+import com.sdjr2.rest_sp5_ztoe.models.UserFaker;
+import com.sdjr2.rest_sp5_ztoe.services.UserFakerService;
 
 /**
+ * Controller to manage Java Faker External API.
+ *
  * @author jroldan
  * @version 1.0
  * @category Controller
@@ -29,30 +31,30 @@ import com.sdjr2.rest_sp5_ztoe.services.UserService;
  */
 @RestController
 @RequestMapping("/users")
-public class UserController {
+public class UserFakerController {
 
 	@Autowired
-	private UserService userService;
+	private UserFakerService userService;
 
 	@GetMapping
-	public ResponseEntity<List<User>> getUsers(
+	public ResponseEntity<List<UserFaker>> getUsers(
 			@RequestParam(value = "startWith", required = false) final String startWith) {
 		return new ResponseEntity<>(this.userService.getUsers(startWith), HttpStatus.OK);
 	}
 
 	@GetMapping(value = "/{username}")
-	public ResponseEntity<User> getUser(@PathVariable("username") final String username) {
+	public ResponseEntity<UserFaker> getUser(@PathVariable("username") final String username) {
 		return new ResponseEntity<>(this.userService.getUser(username), HttpStatus.OK);
 	}
 
 	@PostMapping
-	public ResponseEntity<User> createUser(@RequestBody final User user) {
+	public ResponseEntity<UserFaker> createUser(@RequestBody final UserFaker user) {
 		return new ResponseEntity<>(this.userService.createUser(user), HttpStatus.CREATED);
 	}
 
 	@PutMapping(value = "/{username}")
-	public ResponseEntity<User> updateUser(@PathVariable("username") final String username,
-			@RequestBody final User user) {
+	public ResponseEntity<UserFaker> updateUser(@PathVariable("username") final String username,
+			@RequestBody final UserFaker user) {
 		return new ResponseEntity<>(this.userService.updateUser(username, user), HttpStatus.OK);
 	}
 
