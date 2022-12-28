@@ -18,7 +18,7 @@ import jakarta.persistence.Table;
  * @since 22/12/26
  */
 @Entity
-@Table(name = "user_in_role")
+@Table(name = "users_in_roles")
 public class UserInRoleEntity {
 
 	@Id
@@ -27,11 +27,11 @@ public class UserInRoleEntity {
 	private Integer id;
 
 	@ManyToOne
-	@JoinColumn(name = "user_id")
+	@JoinColumn(name = "user_id", referencedColumnName = "id")
 	private UserEntity user;
 
 	@ManyToOne
-	@JoinColumn(name = "role_id")
+	@JoinColumn(name = "role_id", referencedColumnName = "id")
 	private RoleEntity role;
 
 	public Integer getId() {

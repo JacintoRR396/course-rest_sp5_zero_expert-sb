@@ -16,7 +16,7 @@ import jakarta.persistence.Table;
  * @since 22/12/26
  */
 @Entity
-@Table(name = "role")
+@Table(name = "roles")
 public class RoleEntity {
 
 	@Id

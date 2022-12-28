@@ -18,7 +18,7 @@ import jakarta.persistence.Table;
  * @since 22/12/26
  */
 @Entity
-@Table(name = "address")
+@Table(name = "addresses")
 public class AddressEntity {
 
 	@Id
@@ -36,7 +36,7 @@ public class AddressEntity {
 	private String city;
 
 	@ManyToOne
-	@JoinColumn(name = "profile_id")
+	@JoinColumn(name = "profile_id", referencedColumnName = "id")
 	private ProfileEntity profile;
 
 	public Integer getId() {

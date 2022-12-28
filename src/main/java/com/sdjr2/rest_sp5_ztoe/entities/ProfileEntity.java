@@ -20,7 +20,7 @@ import jakarta.persistence.TemporalType;
  * @since 22/12/26
  */
 @Entity
-@Table(name = "profile")
+@Table(name = "profiles")
 public class ProfileEntity {
 
 	@Id
