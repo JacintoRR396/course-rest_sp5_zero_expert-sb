@@ -10,6 +10,8 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
 /**
+ * Entity that represents a relationship between User and Role in the database.
+ *
  * @author jroldan
  * @version 1.0
  * @category Entity

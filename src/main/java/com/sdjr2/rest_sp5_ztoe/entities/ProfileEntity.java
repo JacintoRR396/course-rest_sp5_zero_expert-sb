@@ -12,6 +12,8 @@ import jakarta.persistence.Temporal;
 import jakarta.persistence.TemporalType;
 
 /**
+ * Entity that represents a Profile in the database.
+ *
  * @author jroldan
  * @version 1.0
  * @category Entity

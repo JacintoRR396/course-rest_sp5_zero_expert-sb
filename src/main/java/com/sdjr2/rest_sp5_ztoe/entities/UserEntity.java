@@ -10,6 +10,8 @@ import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 
 /**
+ * Entity that represents a User in the database.
+ *
  * @author jroldan
  * @version 1.0
  * @category Entity
