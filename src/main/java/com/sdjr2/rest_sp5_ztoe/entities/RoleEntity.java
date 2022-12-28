@@ -8,6 +8,8 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
 /**
+ * Entity that represents a Role in the database.
+ *
  * @author jroldan
  * @version 1.0
  * @category Entity
