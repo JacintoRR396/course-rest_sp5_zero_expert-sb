@@ -38,8 +38,13 @@ public class UserController {
 	}
 
 	@GetMapping(value = "/{userId}")
-	public ResponseEntity<UserEntity> getUser(@PathVariable("userId") final Integer userId) {
-		return new ResponseEntity<>(this.userService.getUser(userId), HttpStatus.OK);
+	public ResponseEntity<UserEntity> getUserById(@PathVariable("userId") final Integer userId) {
+		return new ResponseEntity<>(this.userService.getUserById(userId), HttpStatus.OK);
+	}
+
+	@GetMapping(value = "/username/{username}")
+	public ResponseEntity<UserEntity> getUserById(@PathVariable("username") final String username) {
+		return new ResponseEntity<>(this.userService.getUserByUsername(username), HttpStatus.OK);
 	}
 
 	@PostMapping
@@ -57,6 +62,12 @@ public class UserController {
 	public ResponseEntity<Void> deleteUser(@PathVariable("userId") final Integer userId) {
 		this.userService.deleteUser(userId);
 		return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+	}
+
+	@PostMapping(value = "authenticate")
+	public ResponseEntity<UserEntity> authenticate(@RequestBody final UserEntity user) {
+		return new ResponseEntity<>(
+				this.userService.getUserByUsernameAndPassword(user.getUsername(), user.getPassword()), HttpStatus.OK);
 	}
 
 }

@@ -1,7 +1,6 @@
 package com.sdjr2.rest_sp5_ztoe.services;
 
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -32,35 +31,41 @@ public class UserService {
 		return this.userRepo.findAll();
 	}
 
-	private UserEntity checkExistsUser(final Integer userId, final boolean isCreate) {
-		final Optional<UserEntity> optRole = this.userRepo.findById(userId);
-		if (optRole.isPresent()) {
-			if (isCreate) {
-				throw new ResponseStatusException(HttpStatus.BAD_REQUEST,
-						String.format("User with ID %s already exists", userId));
-			}
-			return optRole.get();
-		} else {
-			throw new ResponseStatusException(HttpStatus.NOT_FOUND, String.format("User with ID %s not found", userId));
-		}
+	private UserEntity checkExistsUser(final Integer userId) {
+		return this.userRepo.findById(userId).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND,
+				String.format("User with ID '%d' not found", userId)));
 	}
 
-	public UserEntity getUser(final Integer userId) {
-		return this.checkExistsUser(userId, false);
+	public UserEntity getUserById(final Integer userId) {
+		return this.checkExistsUser(userId);
+	}
+
+	public UserEntity getUserByUsername(final String username) {
+		return this.userRepo.findByUsername(username)
+				.orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND,
+						String.format("User with Username '%s' not found", username)));
+	}
+
+	public UserEntity getUserByUsernameAndPassword(final String username, final String password) {
+		return this.userRepo.findByUsernameAndPassword(username, password)
+				.orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND,
+						String.format("User with Username '%s' and Password '%s' not found", username, password)));
 	}
 
 	public UserEntity createUser(final UserEntity user) {
-		// TODO this.checkExistsUser(user.getId(), true);
+//		this.userRepo.findByUsername(user.getUsername())
+//				.orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND,
+//						String.format("User with Username '%s' already exists", user.getUsername())));
 		return this.userRepo.save(user);
 	}
 
 	public UserEntity updateUser(final Integer userId, final UserEntity user) {
-		this.checkExistsUser(userId, false);
+		this.checkExistsUser(userId);
 		return this.userRepo.save(user);
 	}
 
 	public void deleteUser(final Integer userId) {
-		final UserEntity userToBeDeleted = this.checkExistsUser(userId, false);
+		final UserEntity userToBeDeleted = this.checkExistsUser(userId);
 		this.userRepo.delete(userToBeDeleted);
 	}
 
