@@ -49,6 +49,10 @@ public class UserService {
 		return this.userRepo.findAll(PageRequest.of(pageNum, pageSize, typeOrder, attribute));
 	}
 
+	public List<String> getUsernames() {
+		return this.userRepo.findAllUserNames();
+	}
+
 	private UserEntity checkExistsUser(final Integer userId) {
 		return this.userRepo.findById(userId).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND,
 				String.format("User with ID '%d' not found", userId)));

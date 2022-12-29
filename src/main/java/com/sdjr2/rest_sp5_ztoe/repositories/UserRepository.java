@@ -1,8 +1,10 @@
 package com.sdjr2.rest_sp5_ztoe.repositories;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
 
 import com.sdjr2.rest_sp5_ztoe.entities.UserEntity;
 
@@ -20,5 +22,8 @@ public interface UserRepository extends JpaRepository<UserEntity, Integer> {
 	public Optional<UserEntity> findByUsername(String usename);
 
 	public Optional<UserEntity> findByUsernameAndPassword(String usename, String password);
+
+	@Query("SELECT u.username FROM UserEntity u ")
+	public List<String> findAllUserNames();
 
 }

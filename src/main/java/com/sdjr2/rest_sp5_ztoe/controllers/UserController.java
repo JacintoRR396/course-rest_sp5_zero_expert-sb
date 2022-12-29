@@ -63,6 +63,11 @@ public class UserController {
 				this.userService.getUsersWithPaginationAndOrder(pageNum, pageSize, attribute, isAsc), HttpStatus.OK);
 	}
 
+	@GetMapping(value = "/usernames")
+	public ResponseEntity<List<String>> getUsernames() {
+		return new ResponseEntity<>(this.userService.getUsernames(), HttpStatus.OK);
+	}
+
 	@GetMapping(value = "/{userId}")
 	public ResponseEntity<UserEntity> getUserById(@PathVariable("userId") final Integer userId) {
 		return new ResponseEntity<>(this.userService.getUserById(userId), HttpStatus.OK);
