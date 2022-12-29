@@ -3,6 +3,9 @@ package com.sdjr2.rest_sp5_ztoe.services;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
@@ -29,6 +32,21 @@ public class UserService {
 
 	public List<UserEntity> getUsers() {
 		return this.userRepo.findAll();
+	}
+
+	public Page<UserEntity> getUsersWithPagination(final int pageNum, final int pageSize) {
+		return this.userRepo.findAll(PageRequest.of(pageNum, pageSize));
+	}
+
+	public List<UserEntity> getUsersWithOrder(final String attribute, final boolean isAsc) {
+		final Sort.Direction typeOrder = (isAsc) ? Sort.Direction.ASC : Sort.Direction.DESC;
+		return this.userRepo.findAll(Sort.by(typeOrder, attribute));
+	}
+
+	public Page<UserEntity> getUsersWithPaginationAndOrder(final int pageNum, final int pageSize,
+			final String attribute, final boolean isAsc) {
+		final Sort.Direction typeOrder = (isAsc) ? Sort.Direction.ASC : Sort.Direction.DESC;
+		return this.userRepo.findAll(PageRequest.of(pageNum, pageSize, typeOrder, attribute));
 	}
 
 	private UserEntity checkExistsUser(final Integer userId) {

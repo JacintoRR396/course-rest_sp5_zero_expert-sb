@@ -25,7 +25,7 @@ public class MockService {
 	private UserRepository userRepository;
 
 	public void mockUsers() {
-		final int size = 4;
+		final int size = 100;
 		for (int i = 0; i < size; i++) {
 			final UserEntity user = new UserEntity();
 			user.setUsername(this.faker.name().username());

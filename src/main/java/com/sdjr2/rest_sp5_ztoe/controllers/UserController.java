@@ -3,6 +3,7 @@ package com.sdjr2.rest_sp5_ztoe.controllers;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.sdjr2.rest_sp5_ztoe.entities.UserEntity;
@@ -35,6 +37,30 @@ public class UserController {
 	@GetMapping
 	public ResponseEntity<List<UserEntity>> getUsers() {
 		return new ResponseEntity<>(this.userService.getUsers(), HttpStatus.OK);
+	}
+
+	@GetMapping(value = "/pagination")
+	public ResponseEntity<Page<UserEntity>> getUsersWithPagination(
+			@RequestParam(value = "page", defaultValue = "0", required = false) final int pageNum,
+			@RequestParam(value = "size", defaultValue = "15", required = false) final int pageSize) {
+		return new ResponseEntity<>(this.userService.getUsersWithPagination(pageNum, pageSize), HttpStatus.OK);
+	}
+
+	@GetMapping(value = "/order")
+	public ResponseEntity<List<UserEntity>> getUsersWithOrder(
+			@RequestParam(value = "attribute", defaultValue = "username", required = false) final String attribute,
+			@RequestParam(value = "asc", defaultValue = "true", required = false) final boolean isAsc) {
+		return new ResponseEntity<>(this.userService.getUsersWithOrder(attribute, isAsc), HttpStatus.OK);
+	}
+
+	@GetMapping(value = "/paginationAndOrder")
+	public ResponseEntity<Page<UserEntity>> getUsersWithPaginationAndOrder(
+			@RequestParam(value = "page", defaultValue = "0", required = false) final int pageNum,
+			@RequestParam(value = "size", defaultValue = "15", required = false) final int pageSize,
+			@RequestParam(value = "attribute", defaultValue = "username", required = false) final String attribute,
+			@RequestParam(value = "asc", defaultValue = "true", required = false) final boolean isAsc) {
+		return new ResponseEntity<>(
+				this.userService.getUsersWithPaginationAndOrder(pageNum, pageSize, attribute, isAsc), HttpStatus.OK);
 	}
 
 	@GetMapping(value = "/{userId}")
