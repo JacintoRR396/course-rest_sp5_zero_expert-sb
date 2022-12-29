@@ -9,6 +9,8 @@ import org.springframework.context.annotation.Configuration;
 import com.github.javafaker.Faker;
 
 /**
+ * Java Faker External API.
+ *
  * @author jroldan
  * @version 1.0
  * @category Bean

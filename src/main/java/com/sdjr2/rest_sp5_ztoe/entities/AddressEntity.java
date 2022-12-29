@@ -10,13 +10,15 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
 /**
+ * Entity that represents a Address in the database.
+ *
  * @author jroldan
  * @version 1.0
  * @category Entity
  * @since 22/12/26
  */
 @Entity
-@Table(name = "address")
+@Table(name = "addresses")
 public class AddressEntity {
 
 	@Id
@@ -34,7 +36,7 @@ public class AddressEntity {
 	private String city;
 
 	@ManyToOne
-	@JoinColumn(name = "profile_id")
+	@JoinColumn(name = "profile_id", referencedColumnName = "id")
 	private ProfileEntity profile;
 
 	public Integer getId() {

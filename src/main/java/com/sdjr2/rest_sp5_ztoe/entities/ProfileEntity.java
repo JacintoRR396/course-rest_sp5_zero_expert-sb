@@ -7,18 +7,22 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import jakarta.persistence.Temporal;
 import jakarta.persistence.TemporalType;
 
 /**
+ * Entity that represents a Profile in the database.
+ *
  * @author jroldan
  * @version 1.0
  * @category Entity
  * @since 22/12/26
  */
 @Entity
-@Table(name = "profile")
+@Table(name = "profiles")
 public class ProfileEntity {
 
 	@Id
@@ -35,6 +39,10 @@ public class ProfileEntity {
 	@Column(name = "birthdate")
 	@Temporal(TemporalType.DATE)
 	private Date birthDate;
+
+	@OneToOne
+	@JoinColumn(name = "user_id", referencedColumnName = "id")
+	private UserEntity user;
 
 	public Integer getId() {
 		return this.id;
@@ -66,6 +74,14 @@ public class ProfileEntity {
 
 	public void setBirthDate(final Date birthDate) {
 		this.birthDate = birthDate;
+	}
+
+	public UserEntity getUser() {
+		return this.user;
+	}
+
+	public void setUser(final UserEntity user) {
+		this.user = user;
 	}
 
 	@Override

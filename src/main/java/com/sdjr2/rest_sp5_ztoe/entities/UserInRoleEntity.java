@@ -10,13 +10,15 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
 /**
+ * Entity that represents a relationship between User and Role in the database.
+ *
  * @author jroldan
  * @version 1.0
  * @category Entity
  * @since 22/12/26
  */
 @Entity
-@Table(name = "user_in_role")
+@Table(name = "users_in_roles")
 public class UserInRoleEntity {
 
 	@Id
@@ -25,11 +27,11 @@ public class UserInRoleEntity {
 	private Integer id;
 
 	@ManyToOne
-	@JoinColumn(name = "user_id")
+	@JoinColumn(name = "user_id", referencedColumnName = "id")
 	private UserEntity user;
 
 	@ManyToOne
-	@JoinColumn(name = "role_id")
+	@JoinColumn(name = "role_id", referencedColumnName = "id")
 	private RoleEntity role;
 
 	public Integer getId() {
