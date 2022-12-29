@@ -14,7 +14,8 @@ import com.sdjr2.rest_sp5_ztoe.entities.UserEntity;
 import com.sdjr2.rest_sp5_ztoe.repositories.UserRepository;
 
 /**
- * Service that manages business logic about Users.
+ * Service that manages business logic about Users, it uses the repository
+ * {@link UserRepository}.
  * <p>
  * This Service maps the roles of the database layer {@link UserEntity} to the
  * business logic layer and viceversa.
@@ -23,6 +24,7 @@ import com.sdjr2.rest_sp5_ztoe.repositories.UserRepository;
  * @version 1.0
  * @category Service
  * @since 22/12/28
+ * @upgrade 22/12/29
  */
 @Service
 public class UserService {

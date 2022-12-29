@@ -20,12 +20,13 @@ import com.sdjr2.rest_sp5_ztoe.entities.UserEntity;
 import com.sdjr2.rest_sp5_ztoe.services.UserService;
 
 /**
- * Controller to manage Users.
+ * Controller to manage Users, it uses the service {@link UserService}.
  *
  * @author jroldan
  * @version 1.0
  * @category Controller
  * @since 22/12/28
+ * @upgrade 22/12/29
  */
 @RestController
 @RequestMapping("/users")
