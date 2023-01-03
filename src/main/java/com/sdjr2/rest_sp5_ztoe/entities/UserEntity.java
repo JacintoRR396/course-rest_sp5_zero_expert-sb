@@ -1,5 +1,7 @@
 package com.sdjr2.rest_sp5_ztoe.entities;
 
+import java.io.Serializable;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -17,7 +19,9 @@ import jakarta.persistence.Table;
  */
 @Entity
 @Table(name = "users")
-public class UserEntity {
+public class UserEntity implements Serializable {
+
+	private static final long serialVersionUID = -1327367545984759089L;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
