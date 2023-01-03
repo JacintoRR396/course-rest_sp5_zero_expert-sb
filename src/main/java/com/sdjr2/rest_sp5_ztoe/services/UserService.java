@@ -67,6 +67,11 @@ public class UserService {
 
 	@Cacheable("users")
 	public UserEntity getUserByUsername(final String username) {
+		try {
+			Thread.sleep(3000);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
 		return this.userRepo.findByUsername(username)
 				.orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND,
 						String.format("User with Username '%s' not found", username)));
