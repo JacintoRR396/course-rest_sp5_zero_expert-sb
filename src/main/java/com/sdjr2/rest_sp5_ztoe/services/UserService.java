@@ -3,6 +3,8 @@ package com.sdjr2.rest_sp5_ztoe.services;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
@@ -23,6 +25,7 @@ import com.sdjr2.rest_sp5_ztoe.repositories.UserRepository;
  * @version 1.0
  * @category Service
  * @since 22/12/28
+ * @modify 23/01/03
  */
 @Service
 public class UserService {
@@ -62,7 +65,13 @@ public class UserService {
 		return this.checkExistsUser(userId);
 	}
 
+	@Cacheable("users")
 	public UserEntity getUserByUsername(final String username) {
+		try {
+			Thread.sleep(3000);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
 		return this.userRepo.findByUsername(username)
 				.orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND,
 						String.format("User with Username '%s' not found", username)));
@@ -86,6 +95,7 @@ public class UserService {
 		return this.userRepo.save(user);
 	}
 
+	@CacheEvict("users")
 	public void deleteUser(final Integer userId) {
 		final UserEntity userToBeDeleted = this.checkExistsUser(userId);
 		this.userRepo.delete(userToBeDeleted);
