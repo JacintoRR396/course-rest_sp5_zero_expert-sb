@@ -1,7 +1,9 @@
 package com.sdjr2.rest_sp5_ztoe.services;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import org.springframework.web.server.ResponseStatusException;
 
 import com.sdjr2.rest_sp5_ztoe.entities.ProfileEntity;
 import com.sdjr2.rest_sp5_ztoe.repositories.ProfileRepository;
@@ -23,14 +25,19 @@ import com.sdjr2.rest_sp5_ztoe.repositories.ProfileRepository;
 public class ProfileService {
 
 	@Autowired
-	private ProfileRepository profileRepository;
-	
+	private ProfileRepository profileRepo;
+
 	@Autowired
 	private UserService userService;
 
+	public ProfileEntity getByProfileIdAndUserId(Integer userId, Integer profileId) {
+		return this.profileRepo.findByUserIdAndProfileId(userId, profileId).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND,
+				String.format("Profile with ID '%d' for User with ID '%d' not found", profileId, userId)));
+	}
+
 	public ProfileEntity createProfile(Integer userId, final ProfileEntity profile) {
 		this.userService.getUserById(userId);
-		return this.profileRepository.save(profile);
+		return this.profileRepo.save(profile);
 	}
 
 }
