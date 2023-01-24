@@ -1,6 +1,7 @@
 package com.sdjr2.rest_sp5_ztoe.services;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.CacheEvict;
@@ -16,7 +17,8 @@ import com.sdjr2.rest_sp5_ztoe.entities.UserEntity;
 import com.sdjr2.rest_sp5_ztoe.repositories.UserRepository;
 
 /**
- * Service that manages business logic about Users.
+ * Service that manages business logic about Users, it uses the repository
+ * {@link UserRepository}.
  * <p>
  * This Service maps the roles of the database layer {@link UserEntity} to the
  * business logic layer and viceversa.
@@ -84,10 +86,13 @@ public class UserService {
 	}
 
 	public UserEntity createUser(final UserEntity user) {
-//		this.userRepo.findByUsername(user.getUsername())
-//				.orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND,
-//						String.format("User with Username '%s' already exists", user.getUsername())));
-		return this.userRepo.save(user);
+		final Optional<UserEntity> optUserToBeCreated = this.userRepo.findByUsername(user.getUsername());
+		if (optUserToBeCreated.isEmpty()) {
+			return this.userRepo.save(user);
+		}
+		throw new ResponseStatusException(HttpStatus.BAD_REQUEST,
+				String.format("User with Username '%s' already exists", user.getUsername()));
+
 	}
 
 	public UserEntity updateUser(final Integer userId, final UserEntity user) {

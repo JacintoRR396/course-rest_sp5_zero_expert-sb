@@ -15,7 +15,7 @@ import com.sdjr2.rest_sp5_ztoe.entities.UserEntity;
  * @version 1.0
  * @category Repository
  * @since 22/12/27
- * @upgrade 22/12/28
+ * @upgrade 22/12/29
  */
 public interface UserRepository extends JpaRepository<UserEntity, Integer> {
 
