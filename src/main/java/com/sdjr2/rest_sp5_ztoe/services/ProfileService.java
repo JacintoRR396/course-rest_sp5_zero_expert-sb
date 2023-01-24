@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
 import com.sdjr2.rest_sp5_ztoe.entities.ProfileEntity;
+import com.sdjr2.rest_sp5_ztoe.entities.UserEntity;
 import com.sdjr2.rest_sp5_ztoe.repositories.ProfileRepository;
 
 /**
@@ -36,7 +37,8 @@ public class ProfileService {
 	}
 
 	public ProfileEntity createProfile(Integer userId, final ProfileEntity profile) {
-		this.userService.getUserById(userId);
+		UserEntity userDB = this.userService.getUserById(userId);
+		profile.setUser(userDB);
 		return this.profileRepo.save(profile);
 	}
 
