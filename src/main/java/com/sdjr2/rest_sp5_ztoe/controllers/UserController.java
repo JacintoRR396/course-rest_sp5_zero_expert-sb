@@ -19,13 +19,16 @@ import org.springframework.web.bind.annotation.RestController;
 import com.sdjr2.rest_sp5_ztoe.entities.UserEntity;
 import com.sdjr2.rest_sp5_ztoe.services.UserService;
 
+import io.micrometer.core.annotation.Timed;
+
 /**
- * Controller to manage Users.
+ * Controller to manage Users, it uses the service {@link UserService}.
  *
  * @author jroldan
  * @version 1.0
  * @category Controller
  * @since 22/12/28
+ * @upgrade 22/12/29
  */
 @RestController
 @RequestMapping("/users")
@@ -35,6 +38,7 @@ public class UserController {
 	private UserService userService;
 
 	@GetMapping
+	@Timed(value = "get.users")
 	public ResponseEntity<List<UserEntity>> getUsers() {
 		return new ResponseEntity<>(this.userService.getUsers(), HttpStatus.OK);
 	}
