@@ -45,7 +45,11 @@ public class SecurityConfig {
 		http.csrf().disable()
 			.authorizeHttpRequests()
 			.requestMatchers("/users/**").hasRole("ADMIN")
-			.requestMatchers("/roles/**").permitAll().anyRequest().authenticated()
+			//.requestMatchers("/users/**").hasAnyRole("ADMIN", "USER")
+			//.requestMatchers(HttpMethod.DELETE, "/users/**").hasAuthority("DELETE_USER_AUTHORITY")
+			//.requestMatchers(HttpMethod.DELETE, "/users/**").hasAnyAuthority("DELETE_ADMIN_AUTHORITY", "DELETE_USER_AUTHORITY")
+			.requestMatchers("/roles/**").permitAll()
+			.anyRequest().authenticated()
 			.and()
         	.httpBasic();
 	    return http.build();
