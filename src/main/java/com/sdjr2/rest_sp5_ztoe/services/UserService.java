@@ -20,7 +20,7 @@ import com.sdjr2.rest_sp5_ztoe.repositories.UserRepository;
  * Service that manages business logic about Users, it uses the repository
  * {@link UserRepository}.
  * <p>
- * This Service maps the roles of the database layer {@link UserEntity} to the
+ * This Service maps the users of the database layer {@link UserEntity} to the
  * business logic layer and viceversa.
  *
  * @author jroldan
