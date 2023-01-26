@@ -33,7 +33,7 @@ public class AddressController {
 	
 	@GetMapping
 	public ResponseEntity<List<AddressEntity>> getAddressesByProfileAndUserId(@PathVariable("userId") Integer userId, @PathVariable("profileId") Integer profileId) {
-		return new ResponseEntity<List<AddressEntity>>(this.addressService.findAddressesByProfileAndUserId(userId, profileId), HttpStatus.OK);
+		return new ResponseEntity<>(this.addressService.findAddressesByProfileAndUserId(userId, profileId), HttpStatus.OK);
 	}
 	
 	@PostMapping
