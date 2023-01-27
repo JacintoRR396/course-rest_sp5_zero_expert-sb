@@ -34,6 +34,14 @@ public class UserEntity implements Serializable {
 	@Column(name = "password")
 	private String password;
 
+	public UserEntity() { }
+
+	public UserEntity(String username, String password) {
+		super();
+		this.username = username;
+		this.password = password;
+	}
+
 	public Integer getId() {
 		return this.id;
 	}
@@ -86,6 +94,11 @@ public class UserEntity implements Serializable {
 			return false;
 		}
 		return true;
+	}
+
+	@Override
+	public String toString() {
+		return "UserEntity [id=" + id + ", username=" + username + ", password=" + password + "]";
 	}
 
 }
