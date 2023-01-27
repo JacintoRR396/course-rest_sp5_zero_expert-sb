@@ -16,6 +16,7 @@ import jakarta.persistence.Table;
  * @version 1.0
  * @category Entity
  * @since 22/12/26
+ * @upgrade 23/01/27
  */
 @Entity
 @Table(name = "roles")

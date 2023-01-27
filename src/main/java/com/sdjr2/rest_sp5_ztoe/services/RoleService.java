@@ -9,7 +9,9 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
 import com.sdjr2.rest_sp5_ztoe.entities.RoleEntity;
+import com.sdjr2.rest_sp5_ztoe.entities.UserEntity;
 import com.sdjr2.rest_sp5_ztoe.repositories.RoleRepository;
+import com.sdjr2.rest_sp5_ztoe.repositories.UserInRoleRepository;
 
 /**
  * Service that manages business logic about Roles.
@@ -21,15 +23,23 @@ import com.sdjr2.rest_sp5_ztoe.repositories.RoleRepository;
  * @version 1.0
  * @category Service
  * @since 22/12/27
+ * @upgrade 23/01/27
  */
 @Service
 public class RoleService {
 
 	@Autowired
 	private RoleRepository roleRepo;
+	
+	@Autowired
+	private UserInRoleRepository userInRoleRepo;
 
 	public List<RoleEntity> getRoles() {
 		return this.roleRepo.findAll();
+	}
+	
+	public List<UserEntity> getUsersByRole( String nameRole ) {
+		return this.userInRoleRepo.findUsersByRoleName(nameRole);
 	}
 
 	public RoleEntity getRole(final Integer roleId) {

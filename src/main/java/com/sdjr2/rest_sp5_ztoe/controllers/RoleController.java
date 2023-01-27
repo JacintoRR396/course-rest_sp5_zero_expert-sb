@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.sdjr2.rest_sp5_ztoe.entities.RoleEntity;
+import com.sdjr2.rest_sp5_ztoe.entities.UserEntity;
 import com.sdjr2.rest_sp5_ztoe.services.RoleService;
 
 /**
@@ -35,6 +36,11 @@ public class RoleController {
 	@GetMapping
 	public ResponseEntity<List<RoleEntity>> getRoles() {
 		return new ResponseEntity<>(this.roleService.getRoles(), HttpStatus.OK);
+	}
+	
+	@GetMapping(value = "/{roleName}/users")
+	public ResponseEntity<List<UserEntity>> getUsersByRoleName(@PathVariable("roleName") final String roleName) {
+		return new ResponseEntity<>(this.roleService.getUsersByRole(roleName), HttpStatus.OK);
 	}
 
 	@GetMapping(value = "/{roleId}")
