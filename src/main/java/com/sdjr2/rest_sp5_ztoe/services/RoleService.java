@@ -3,13 +3,19 @@ package com.sdjr2.rest_sp5_ztoe.services;
 import java.util.List;
 import java.util.Optional;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
 import com.sdjr2.rest_sp5_ztoe.entities.RoleEntity;
+import com.sdjr2.rest_sp5_ztoe.entities.UserEntity;
+import com.sdjr2.rest_sp5_ztoe.models.SecurityRule;
 import com.sdjr2.rest_sp5_ztoe.repositories.RoleRepository;
+import com.sdjr2.rest_sp5_ztoe.repositories.UserInRoleRepository;
 
 /**
  * Service that manages business logic about Roles.
@@ -21,15 +27,29 @@ import com.sdjr2.rest_sp5_ztoe.repositories.RoleRepository;
  * @version 1.0
  * @category Service
  * @since 22/12/27
+ * @upgrade 23/01/30
  */
 @Service
 public class RoleService {
 
+	private static final Logger log = LoggerFactory.getLogger( RoleService.class );
+
 	@Autowired
 	private RoleRepository roleRepo;
 
+	@Autowired
+	private UserInRoleRepository userInRoleRepo;
+
+	@SecurityRule
 	public List<RoleEntity> getRoles() {
+		log.info( "getRoles()." );
 		return this.roleRepo.findAll();
+	}
+
+	@Secured({"ROLE_ADMIN"})
+	public List<UserEntity> getUsersByRole( String roleName ) {
+		log.info( "getUsersByRole() with roleName '{}'.", roleName );
+		return this.userInRoleRepo.findUsersByRoleName(roleName);
 	}
 
 	public RoleEntity getRole(final Integer roleId) {

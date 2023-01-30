@@ -41,6 +41,11 @@
 			<groupId>io.micrometer</groupId>
 			<artifactId>micrometer-registry-prometheus</artifactId>
 		</dependency>
+		<!-- Spring Boot : Spring Security -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-security</artifactId>
+		</dependency>
 		<!-- Spring Boot : Spring Devtools -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>

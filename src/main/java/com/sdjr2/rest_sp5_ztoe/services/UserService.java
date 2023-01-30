@@ -92,7 +92,6 @@ public class UserService {
 		}
 		throw new ResponseStatusException(HttpStatus.BAD_REQUEST,
 				String.format("User with Username '%s' already exists", user.getUsername()));
-
 	}
 
 	public UserEntity updateUser(final Integer userId, final UserEntity user) {

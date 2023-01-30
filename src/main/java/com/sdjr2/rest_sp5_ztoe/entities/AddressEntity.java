@@ -1,5 +1,7 @@
 package com.sdjr2.rest_sp5_ztoe.entities;
 
+import java.io.Serializable;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -16,10 +18,13 @@ import jakarta.persistence.Table;
  * @version 1.0
  * @category Entity
  * @since 22/12/26
+ * @upgrade 23/01/27
  */
 @Entity
 @Table(name = "addresses")
-public class AddressEntity {
+public class AddressEntity implements Serializable {
+
+	private static final long serialVersionUID = 2339186471035380213L;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -108,4 +113,11 @@ public class AddressEntity {
 		}
 		return true;
 	}
+
+	@Override
+	public String toString() {
+		return "AddressEntity [id=" + id + ", street=" + street + ", number=" + number + ", city=" + city + ", profile="
+				+ profile + "]";
+	}
+	
 }

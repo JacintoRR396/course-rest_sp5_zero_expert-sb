@@ -16,6 +16,7 @@ import jakarta.persistence.Table;
  * @version 1.0
  * @category Entity
  * @since 22/12/27
+ * @upgrade 23/01/27
  */
 @Entity
 @Table(name = "users")
@@ -33,6 +34,14 @@ public class UserEntity implements Serializable {
 
 	@Column(name = "password")
 	private String password;
+
+	public UserEntity() { }
+
+	public UserEntity(String username, String password) {
+		super();
+		this.username = username;
+		this.password = password;
+	}
 
 	public Integer getId() {
 		return this.id;
@@ -86,6 +95,11 @@ public class UserEntity implements Serializable {
 			return false;
 		}
 		return true;
+	}
+
+	@Override
+	public String toString() {
+		return "UserEntity [id=" + id + ", username=" + username + ", password=" + password + "]";
 	}
 
 }

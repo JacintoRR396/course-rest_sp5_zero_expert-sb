@@ -6,7 +6,6 @@ import org.springframework.cache.concurrent.ConcurrentMapCacheManager;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
-// TODO: Auto-generated Javadoc
 /**
  * Cache External API to manager caching.
  *
