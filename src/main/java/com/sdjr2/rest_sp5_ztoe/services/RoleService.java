@@ -8,13 +8,12 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.access.annotation.Secured;
-import org.springframework.security.access.prepost.PostAuthorize;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
 import com.sdjr2.rest_sp5_ztoe.entities.RoleEntity;
 import com.sdjr2.rest_sp5_ztoe.entities.UserEntity;
+import com.sdjr2.rest_sp5_ztoe.models.SecurityRule;
 import com.sdjr2.rest_sp5_ztoe.repositories.RoleRepository;
 import com.sdjr2.rest_sp5_ztoe.repositories.UserInRoleRepository;
 
@@ -32,22 +31,21 @@ import com.sdjr2.rest_sp5_ztoe.repositories.UserInRoleRepository;
  */
 @Service
 public class RoleService {
-	
+
 	private static final Logger log = LoggerFactory.getLogger( RoleService.class );
 
 	@Autowired
 	private RoleRepository roleRepo;
-	
+
 	@Autowired
 	private UserInRoleRepository userInRoleRepo;
 
-	@PreAuthorize("hasRole('ROLE_USER') or hasRole('ROLE_ADMIN')")
-	@PostAuthorize("hasRole('ROLE_ADMIN')")
+	@SecurityRule
 	public List<RoleEntity> getRoles() {
 		log.info( "getRoles()." );
 		return this.roleRepo.findAll();
 	}
-	
+
 	@Secured({"ROLE_ADMIN"})
 	public List<UserEntity> getUsersByRole( String roleName ) {
 		log.info( "getUsersByRole() with roleName '{}'.", roleName );
