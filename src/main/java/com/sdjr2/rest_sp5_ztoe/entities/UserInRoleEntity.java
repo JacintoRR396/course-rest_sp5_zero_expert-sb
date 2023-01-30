@@ -1,5 +1,7 @@
 package com.sdjr2.rest_sp5_ztoe.entities;
 
+import java.io.Serializable;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -16,10 +18,13 @@ import jakarta.persistence.Table;
  * @version 1.0
  * @category Entity
  * @since 22/12/26
+ * @upgrade 23/01/26
  */
 @Entity
 @Table(name = "users_in_roles")
-public class UserInRoleEntity {
+public class UserInRoleEntity implements Serializable {
+
+	private static final long serialVersionUID = -6426077101670141136L;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -33,6 +38,14 @@ public class UserInRoleEntity {
 	@ManyToOne
 	@JoinColumn(name = "role_id", referencedColumnName = "id")
 	private RoleEntity role;
+	
+	public UserInRoleEntity() { }
+
+	public UserInRoleEntity(UserEntity user, RoleEntity role) {
+		super();
+		this.user = user;
+		this.role = role;
+	}
 
 	public Integer getId() {
 		return this.id;
@@ -86,6 +99,11 @@ public class UserInRoleEntity {
 			return false;
 		}
 		return true;
+	}
+
+	@Override
+	public String toString() {
+		return "UserInRoleEntity [id=" + id + ", user=" + user + ", role=" + role + "]";
 	}
 
 }

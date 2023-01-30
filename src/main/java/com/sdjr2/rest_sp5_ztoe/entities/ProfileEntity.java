@@ -1,5 +1,6 @@
 package com.sdjr2.rest_sp5_ztoe.entities;
 
+import java.io.Serializable;
 import java.util.Date;
 
 import jakarta.persistence.Column;
@@ -20,10 +21,13 @@ import jakarta.persistence.TemporalType;
  * @version 1.0
  * @category Entity
  * @since 22/12/26
+ * @upgrade 23/01/27
  */
 @Entity
 @Table(name = "profiles")
-public class ProfileEntity {
+public class ProfileEntity implements Serializable {
+
+	private static final long serialVersionUID = 8275286907640701231L;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -113,4 +117,11 @@ public class ProfileEntity {
 		}
 		return true;
 	}
+
+	@Override
+	public String toString() {
+		return "ProfileEntity [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", birthDate="
+				+ birthDate + ", user=" + user + "]";
+	}
+	
 }
