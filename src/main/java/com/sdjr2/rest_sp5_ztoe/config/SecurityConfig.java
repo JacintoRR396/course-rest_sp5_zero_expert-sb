@@ -13,17 +13,18 @@ import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 import org.springframework.security.web.SecurityFilterChain;
 
 /**
-* Config Spring Security Internal to manager security.
+* Config Spring Security Internal to manager in memory security.
 *
 * @author jroldan
 * @version 1.0
 * @since 23/01/26
+* @upgrade 23/01/30
 * @category Bean
 */
 @Configuration
 @EnableWebSecurity
 public class SecurityConfig {
-	
+	/*
 	@Bean
 	public UserDetailsService users() {
 		// The builder will ensure the passwords are encoded before saving in memory
@@ -39,7 +40,7 @@ public class SecurityConfig {
 			.build();
 		return new InMemoryUserDetailsManager(user, admin);
 	}
-	
+	*/
 	@Bean
 	public SecurityFilterChain filterChain (HttpSecurity http) throws Exception {
 		http.csrf().disable()

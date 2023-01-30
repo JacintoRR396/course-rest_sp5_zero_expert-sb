@@ -4,6 +4,8 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -22,10 +24,12 @@ import com.sdjr2.rest_sp5_ztoe.repositories.UserRepository;
  * @version 1.0
  * @category Service
  * @since 22/12/28
- * @upgrade 23/01/27
+ * @upgrade 23/01/30
  */
 @Service
 public class MockService {
+		
+	private static final Logger log = LoggerFactory.getLogger( MockService.class );
 
 	@Autowired
 	private RoleRepository roleRepository;
@@ -58,6 +62,7 @@ public class MockService {
 			RoleEntity roleDB = this.roleRepository.findById(++index).get();
 			UserInRoleEntity userInRole = new UserInRoleEntity( userDB, roleDB );
 			this.userInRoleRepository.save( userInRole );
+			log.info("User created with username '{}', password '{}' and role '{}'", userDB.getUsername(), userDB.getPassword(), userInRole.getRole().getName() );
 		}
 	}
 

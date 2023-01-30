@@ -15,11 +15,13 @@ import com.sdjr2.rest_sp5_ztoe.entities.UserInRoleEntity;
  * @version 1.0
  * @category Repository
  * @since 23/01/26
- * @upgrade 23/01/27
+ * @upgrade 23/01/30
  */
 public interface UserInRoleRepository extends JpaRepository<UserInRoleEntity, Integer> {
 	
 	@Query("SELECT uir.user FROM UserInRoleEntity uir WHERE uir.role.name = ?1")
 	List<UserEntity> findUsersByRoleName( String roleName );
+	
+	List<UserInRoleEntity> findByUser( UserEntity user );
 
 }
