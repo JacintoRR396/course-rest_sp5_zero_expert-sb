@@ -51,7 +51,7 @@ public class MockService {
 	public void mockUsers() {
 		this.mockRoles();
 		
-		final int size = 15;
+		final int size = 5;
 		for ( int i = 0; i < size; i++ ) {
 			final UserEntity user = new UserEntity();
 			user.setUsername( this.faker.name().username() );

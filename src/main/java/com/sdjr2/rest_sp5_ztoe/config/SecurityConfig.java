@@ -2,18 +2,15 @@ package com.sdjr2.rest_sp5_ztoe.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
-import org.springframework.security.core.userdetails.User;
-import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 import org.springframework.security.web.SecurityFilterChain;
 
 /**
-* Config Spring Security Internal to manager in memory security.
+* Config Spring Security Internal to manager security.
 *
 * @author jroldan
 * @version 1.0
@@ -23,7 +20,10 @@ import org.springframework.security.web.SecurityFilterChain;
 */
 @Configuration
 @EnableWebSecurity
+@EnableMethodSecurity(securedEnabled = true, prePostEnabled = true)
 public class SecurityConfig {
+
+	// Security In Memory
 	/*
 	@Bean
 	public UserDetailsService users() {
@@ -41,21 +41,25 @@ public class SecurityConfig {
 		return new InMemoryUserDetailsManager(user, admin);
 	}
 	*/
+
+	// Security level Controller
 	@Bean
 	public SecurityFilterChain filterChain (HttpSecurity http) throws Exception {
 		http.csrf().disable()
 			.authorizeHttpRequests()
-			.requestMatchers("/users/**").hasRole("ADMIN")
+			.requestMatchers("/users/**").permitAll()
+			//.requestMatchers("/users/**").hasRole("ADMIN")
 			//.requestMatchers("/users/**").hasAnyRole("ADMIN", "USER")
 			//.requestMatchers(HttpMethod.DELETE, "/users/**").hasAuthority("DELETE_USER_AUTHORITY")
 			//.requestMatchers(HttpMethod.DELETE, "/users/**").hasAnyAuthority("DELETE_ADMIN_AUTHORITY", "DELETE_USER_AUTHORITY")
-			.requestMatchers("/roles/**").permitAll()
+			.requestMatchers("/roles/**").hasAnyRole("ADMIN", "USER")
 			.anyRequest().authenticated()
 			.and()
         	.httpBasic();
 	    return http.build();
 	}
-	
+
+	// Security encryption
 	@Bean
 	public PasswordEncoder passwordEncoder() {
 		/*
@@ -67,5 +71,5 @@ public class SecurityConfig {
 		*/
 		return new BCryptPasswordEncoder();
 	}
-	
+
 }
