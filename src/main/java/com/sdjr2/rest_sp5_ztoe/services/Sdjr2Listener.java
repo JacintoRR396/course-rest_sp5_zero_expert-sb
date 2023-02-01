@@ -3,9 +3,10 @@ package com.sdjr2.rest_sp5_ztoe.services;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.kafka.annotation.KafkaListener;
-import org.springframework.stereotype.Component;
 
 /**
+ * {@link Sdjr2Listener} class.
+ * <p>
  * Component to manage listener of Kafka Server.
  *
  * @author jroldan

@@ -1,4 +1,4 @@
-package com.sdjr2.rest_sp5_ztoe.entities;
+package com.sdjr2.rest_sp5_ztoe.models.entities;
 
 import java.io.Serializable;
 
@@ -12,37 +12,42 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
 /**
- * Entity that represents a Address in the database.
+ * {@link UserInRoleEntity} class.
+ * <p>
+ * Entity that represents a relationship between User and Role in the database.
  *
  * @author jroldan
  * @version 1.0
  * @category Entity
  * @since 22/12/26
- * @upgrade 23/01/27
+ * @upgrade 23/01/26
  */
 @Entity
-@Table(name = "addresses")
-public class AddressEntity implements Serializable {
+@Table(name = "users_in_roles")
+public class UserInRoleEntity implements Serializable {
 
-	private static final long serialVersionUID = 2339186471035380213L;
+	private static final long serialVersionUID = -6426077101670141136L;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id")
 	private Integer id;
 
-	@Column(name = "street")
-	private String street;
-
-	@Column(name = "number")
-	private String number;
-
-	@Column(name = "city")
-	private String city;
+	@ManyToOne
+	@JoinColumn(name = "user_id", referencedColumnName = "id")
+	private UserEntity user;
 
 	@ManyToOne
-	@JoinColumn(name = "profile_id", referencedColumnName = "id")
-	private ProfileEntity profile;
+	@JoinColumn(name = "role_id", referencedColumnName = "id")
+	private RoleEntity role;
+	
+	public UserInRoleEntity() { }
+
+	public UserInRoleEntity(UserEntity user, RoleEntity role) {
+		super();
+		this.user = user;
+		this.role = role;
+	}
 
 	public Integer getId() {
 		return this.id;
@@ -52,36 +57,20 @@ public class AddressEntity implements Serializable {
 		this.id = id;
 	}
 
-	public String getStreet() {
-		return this.street;
+	public UserEntity getUser() {
+		return this.user;
 	}
 
-	public void setStreet(final String street) {
-		this.street = street;
+	public void setUser(final UserEntity user) {
+		this.user = user;
 	}
 
-	public String getNumber() {
-		return this.number;
+	public RoleEntity getRole() {
+		return this.role;
 	}
 
-	public void setNumber(final String number) {
-		this.number = number;
-	}
-
-	public String getCity() {
-		return this.city;
-	}
-
-	public void setCity(final String city) {
-		this.city = city;
-	}
-
-	public ProfileEntity getProfile() {
-		return this.profile;
-	}
-
-	public void setProfile(final ProfileEntity profile) {
-		this.profile = profile;
+	public void setRole(final RoleEntity role) {
+		this.role = role;
 	}
 
 	@Override
@@ -103,7 +92,7 @@ public class AddressEntity implements Serializable {
 		if (this.getClass() != obj.getClass()) {
 			return false;
 		}
-		final AddressEntity other = (AddressEntity) obj;
+		final UserInRoleEntity other = (UserInRoleEntity) obj;
 		if (this.id == null) {
 			if (other.id != null) {
 				return false;
@@ -116,8 +105,7 @@ public class AddressEntity implements Serializable {
 
 	@Override
 	public String toString() {
-		return "AddressEntity [id=" + id + ", street=" + street + ", number=" + number + ", city=" + city + ", profile="
-				+ profile + "]";
+		return "UserInRoleEntity [id=" + id + ", user=" + user + ", role=" + role + "]";
 	}
-	
+
 }

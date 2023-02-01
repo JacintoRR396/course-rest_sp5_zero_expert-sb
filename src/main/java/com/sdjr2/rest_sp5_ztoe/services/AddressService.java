@@ -5,13 +5,15 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.sdjr2.rest_sp5_ztoe.entities.AddressEntity;
-import com.sdjr2.rest_sp5_ztoe.entities.ProfileEntity;
+import com.sdjr2.rest_sp5_ztoe.models.entities.AddressEntity;
+import com.sdjr2.rest_sp5_ztoe.models.entities.ProfileEntity;
 import com.sdjr2.rest_sp5_ztoe.repositories.AddressRepository;
 
 /**
+ * {@link AddressService} class.
+ * <p>
  * Service that manages business logic about Addresses, it uses the repository
- * {@link AddressRepository}.
+ * {@link AddressRepository} and the service {@link ProfileService}.
  * <p>
  * This Service maps the addresses of the database layer {@link AddressEntity} to
  * the business logic layer and viceversa.

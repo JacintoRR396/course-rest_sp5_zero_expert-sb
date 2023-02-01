@@ -1,4 +1,4 @@
-package com.sdjr2.rest_sp5_ztoe.entities;
+package com.sdjr2.rest_sp5_ztoe.models.entities;
 
 import java.io.Serializable;
 import java.util.Date;
@@ -15,6 +15,8 @@ import jakarta.persistence.Temporal;
 import jakarta.persistence.TemporalType;
 
 /**
+ * {@link ProfileEntity} class.
+ * <p>
  * Entity that represents a Profile in the database.
  *
  * @author jroldan

@@ -10,11 +10,15 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.sdjr2.rest_sp5_ztoe.entities.ProfileEntity;
+import com.sdjr2.rest_sp5_ztoe.models.entities.ProfileEntity;
 import com.sdjr2.rest_sp5_ztoe.services.ProfileService;
 
 /**
- * Controller to manage Profiles of a User, it uses the service {@link ProfileService}.
+ * {@link ProfileController} class.
+ * <p>
+ * Controller to manage Profiles of a User {@link UserController}.
+ * <p>
+ * it uses the dto {@link ProfileEntity} and the service {@link ProfileService}.
  *
  * @author jroldan
  * @version 1.0

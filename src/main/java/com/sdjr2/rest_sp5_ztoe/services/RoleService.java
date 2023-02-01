@@ -11,14 +11,17 @@ import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
-import com.sdjr2.rest_sp5_ztoe.entities.RoleEntity;
-import com.sdjr2.rest_sp5_ztoe.entities.UserEntity;
 import com.sdjr2.rest_sp5_ztoe.models.SecurityRule;
+import com.sdjr2.rest_sp5_ztoe.models.entities.RoleEntity;
+import com.sdjr2.rest_sp5_ztoe.models.entities.UserEntity;
 import com.sdjr2.rest_sp5_ztoe.repositories.RoleRepository;
 import com.sdjr2.rest_sp5_ztoe.repositories.UserInRoleRepository;
 
 /**
- * Service that manages business logic about Roles.
+ * {@link RoleService} class.
+ * <p>
+ * Service that manages business logic about Roles, it uses the repository
+ * {@link RoleRepository} and the service {@link UserInRoleRepository}.
  * <p>
  * This Service maps the roles of the database layer to the business logic
  * layer.

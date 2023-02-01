@@ -7,6 +7,8 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 /**
+ * {@link CacheConfig} class.
+ * <p>
  * Cache External API to manager caching.
  *
  * @author jroldan

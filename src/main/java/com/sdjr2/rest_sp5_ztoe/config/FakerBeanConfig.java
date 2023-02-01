@@ -7,8 +7,11 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 import com.github.javafaker.Faker;
+import com.sdjr2.rest_sp5_ztoe.services.Sdjr2Listener;
 
 /**
+ * {@link FakerBeanConfig} class.
+ * <p>/**
  * Java Faker External API.
  *
  * @author jroldan

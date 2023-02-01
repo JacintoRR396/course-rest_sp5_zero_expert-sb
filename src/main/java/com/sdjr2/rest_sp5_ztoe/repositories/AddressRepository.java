@@ -5,9 +5,11 @@ import java.util.List;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 
-import com.sdjr2.rest_sp5_ztoe.entities.AddressEntity;
+import com.sdjr2.rest_sp5_ztoe.models.entities.AddressEntity;
 
 /**
+ * {@link AddressRepository} class.
+ * <p>
  * Interface for CRUD operations on a repository for a {@link AddressEntity}.
  *
  * @author jroldan

@@ -5,9 +5,11 @@ import java.util.Optional;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 
-import com.sdjr2.rest_sp5_ztoe.entities.ProfileEntity;
+import com.sdjr2.rest_sp5_ztoe.models.entities.ProfileEntity;
 
 /**
+ * {@link ProfileRepository} class.
+ * <p>
  * Interface for CRUD operations on a repository for a {@link ProfileEntity}.
  *
  * @author jroldan

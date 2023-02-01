@@ -16,13 +16,17 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.sdjr2.rest_sp5_ztoe.entities.UserEntity;
+import com.sdjr2.rest_sp5_ztoe.models.entities.UserEntity;
 import com.sdjr2.rest_sp5_ztoe.services.UserService;
 
 import io.micrometer.core.annotation.Timed;
 
 /**
- * Controller to manage Users, it uses the service {@link UserService}.
+ * {@link UserController} class.
+ * <p>
+ * Controller to manage Users.
+ * <p>
+ * it uses the dto {@link UserEntity} and the service {@link UserService}.
  *
  * @author jroldan
  * @version 1.0
