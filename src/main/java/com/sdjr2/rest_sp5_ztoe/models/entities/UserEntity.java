@@ -12,7 +12,7 @@ import jakarta.persistence.Table;
 /**
  * {@link UserEntity} class.
  * <p>
- * Entity that represents a User in the database.
+ * Entity - Represents a User in the database.
  *
  * @author jroldan
  * @version 1.0

@@ -25,7 +25,7 @@ import com.sdjr2.rest_sp5_ztoe.services.RoleService;
 /**
  * {@link RoleController} class.
  * <p>
- * Controller to manage Roles that a User can have. 
+ * Controller - Manage Roles that a User can have. 
  * <p>
  * it uses the dto {@link RoleEntity} and the service {@link RoleService}. 
  *
@@ -50,7 +50,7 @@ public class RoleController {
 		log.info( "Name {}", authentication.getName() );
 		log.info( "Principal {}", authentication.getPrincipal() );
 		log.info( "Credentials {}", authentication.getCredentials() );
-		log.info( "Roles {}", authentication.getAuthorities().toString() );
+		log.info( "Roles {}", authentication.getAuthorities() );
 		return new ResponseEntity<>(this.roleService.getRoles(), HttpStatus.OK);
 	}
 
@@ -60,7 +60,7 @@ public class RoleController {
 		log.info( "Name {}", authentication.getName() );
 		log.info( "Principal {}", authentication.getPrincipal() );
 		log.info( "Credentials {}", authentication.getCredentials() );
-		log.info( "Roles {}", authentication.getAuthorities().toString() );
+		log.info( "Roles {}", authentication.getAuthorities() );
 		return new ResponseEntity<>(this.roleService.getUsersByRole(roleName), HttpStatus.OK);
 	}
 

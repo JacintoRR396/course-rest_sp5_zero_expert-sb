@@ -18,7 +18,7 @@ import com.sdjr2.rest_sp5_ztoe.services.AddressService;
 /**
  * {@link AddressController} class.
  * <p>
- * Controller to manage Addresses of a Profile {@link ProfileController}.
+ * Controller - Manage Addresses of a Profile {@link ProfileController}.
  * <p>
  * it uses the dto {@link AddressEntity} and the service {@link AddressService}.
  *

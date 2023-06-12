@@ -12,7 +12,7 @@ import com.sdjr2.rest_sp5_ztoe.repositories.AddressRepository;
 /**
  * {@link AddressService} class.
  * <p>
- * Service that manages business logic about Addresses, it uses the repository
+ * Service - Manages business logic about Addresses, it uses the repository
  * {@link AddressRepository} and the service {@link ProfileService}.
  * <p>
  * This Service maps the addresses of the database layer {@link AddressEntity} to

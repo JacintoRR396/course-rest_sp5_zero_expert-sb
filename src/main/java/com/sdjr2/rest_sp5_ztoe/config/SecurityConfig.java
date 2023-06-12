@@ -12,13 +12,13 @@ import org.springframework.security.web.SecurityFilterChain;
 /**
  * {@link SecurityConfig} class.
  * <p>
-* Config Spring Security Internal to manager security.
+* Config - Spring Security Internal to manager security.
 *
 * @author jroldan
 * @version 1.0
+* @category Bean
 * @since 23/01/26
 * @upgrade 23/01/30
-* @category Bean
 */
 @Configuration
 @EnableWebSecurity
@@ -46,7 +46,7 @@ public class SecurityConfig {
 
 	// Security level Controller
 	@Bean
-	public SecurityFilterChain filterChain (HttpSecurity http) throws Exception {
+	SecurityFilterChain filterChain (HttpSecurity http) throws Exception {
 		http.csrf().disable()
 			.authorizeHttpRequests()
 			.requestMatchers("/users/**").permitAll()
@@ -63,7 +63,7 @@ public class SecurityConfig {
 
 	// Security encryption
 	@Bean
-	public PasswordEncoder passwordEncoder() {
+	PasswordEncoder passwordEncoder() {
 		/*
 		 * Use {bcrypt} for BCryptPasswordEncoder
 		 * Use {noop} for NoOpPasswordEncoder

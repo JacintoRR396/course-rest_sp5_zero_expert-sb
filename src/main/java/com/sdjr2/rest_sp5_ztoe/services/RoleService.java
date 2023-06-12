@@ -20,7 +20,7 @@ import com.sdjr2.rest_sp5_ztoe.repositories.UserInRoleRepository;
 /**
  * {@link RoleService} class.
  * <p>
- * Service that manages business logic about Roles, it uses the repository
+ * Service - Manages business logic about Roles, it uses the repository
  * {@link RoleRepository} and the service {@link UserInRoleRepository}.
  * <p>
  * This Service maps the roles of the database layer to the business logic

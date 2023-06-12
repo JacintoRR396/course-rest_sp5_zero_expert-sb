@@ -14,7 +14,7 @@ import jakarta.persistence.Table;
 /**
  * {@link AddressEntity} class.
  * <p>
- * Entity that represents a Address in the database.
+ * Entity - Represents a Address in the database.
  *
  * @author jroldan
  * @version 1.0

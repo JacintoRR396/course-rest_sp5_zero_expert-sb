@@ -17,13 +17,13 @@ import org.springframework.kafka.core.DefaultKafkaConsumerFactory;
 
 /**
  * {@link KafkaConfig} class.
-* Config Spring Kafka to manager messages, producers and consumers.
+* Config - Spring Kafka to manager messages, producers and consumers.
 *
 * @author jroldan
 * @version 1.0
+* @category Bean
 * @since 23/01/30
 * @upgrade 23/01/31
-* @category Bean
 */
 @Configuration
 public class KafkaConfig {
@@ -42,12 +42,12 @@ public class KafkaConfig {
 	}
 
 	@Bean
-	public ConsumerFactory<Integer, String> consumerFactory(){
+	ConsumerFactory<Integer, String> consumerFactory(){
 		return new DefaultKafkaConsumerFactory<>(this.consumerProps());
 	}
 
 	@Bean
-	public ConcurrentKafkaListenerContainerFactory<Integer, String> kafkaListenerContainerFactory(){
+	ConcurrentKafkaListenerContainerFactory<Integer, String> kafkaListenerContainerFactory(){
 		ConcurrentKafkaListenerContainerFactory<Integer, String> factory = new ConcurrentKafkaListenerContainerFactory<>();
 		factory.setConsumerFactory(this.consumerFactory());
 		return factory;
@@ -67,7 +67,7 @@ public class KafkaConfig {
 	}
 
 //	@Bean
-//	public KafkaTemplate<Integer, String> createTemplate(){
+//	KafkaTemplate<Integer, String> createTemplate(){
 //		ProducerFactory<Integer, String> pf = new DefaultKafkaProducerFactory<>(this.producerProps());
 //		return new KafkaTemplate<>(pf);
 //	}

@@ -24,7 +24,7 @@ import io.micrometer.core.annotation.Timed;
 /**
  * {@link UserController} class.
  * <p>
- * Controller to manage Users.
+ * Controller - Manage Users.
  * <p>
  * it uses the dto {@link UserEntity} and the service {@link UserService}.
  *

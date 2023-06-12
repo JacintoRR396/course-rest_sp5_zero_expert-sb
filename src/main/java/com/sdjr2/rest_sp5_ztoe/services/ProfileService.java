@@ -12,7 +12,7 @@ import com.sdjr2.rest_sp5_ztoe.repositories.ProfileRepository;
 /**
  * {@link ProfileService} class.
  * <p>
- * Service that manages business logic about Profiles, it uses the repository
+ * Service - Manages business logic about Profiles, it uses the repository
  * {@link ProfileRepository} and the service {@link UserService}.
  * <p>
  * This Service maps the profiles of the database layer {@link ProfileEntity} to

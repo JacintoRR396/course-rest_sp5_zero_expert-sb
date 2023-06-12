@@ -19,12 +19,13 @@ import com.sdjr2.rest_sp5_ztoe.repositories.UserRepository;
 /**
  * {@link SecurityDBService} class.
  * <p>
- * Service Spring Security Internal to manager db security.
+ * Config - Service Spring Security Internal to manager db security.
  *
  * @author jroldan
  * @version 1.0
+ * @category Bean
  * @since 23/01/30
- * @category Service
+ * @upgrade 23/01/30
  */
 @Service
 public class SecurityDBService implements UserDetailsService {

@@ -9,12 +9,13 @@ import org.springframework.context.annotation.Configuration;
 /**
  * {@link CacheConfig} class.
  * <p>
- * Cache External API to manager caching.
+ * Config - Cache External API to manager caching.
  *
  * @author jroldan
  * @version 1.0
- * @since 23/01/09
  * @category Bean
+ * @since 23/01/09
+ * @upgrade 23/01/09
  */
 @Configuration
 @EnableCaching

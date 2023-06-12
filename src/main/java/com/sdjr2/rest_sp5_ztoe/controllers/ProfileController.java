@@ -16,7 +16,7 @@ import com.sdjr2.rest_sp5_ztoe.services.ProfileService;
 /**
  * {@link ProfileController} class.
  * <p>
- * Controller to manage Profiles of a User {@link UserController}.
+ * Controller - Manage Profiles of a User {@link UserController}.
  * <p>
  * it uses the dto {@link ProfileEntity} and the service {@link ProfileService}.
  *

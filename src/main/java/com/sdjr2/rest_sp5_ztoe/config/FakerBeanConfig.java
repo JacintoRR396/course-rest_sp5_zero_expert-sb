@@ -7,24 +7,24 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 import com.github.javafaker.Faker;
-import com.sdjr2.rest_sp5_ztoe.services.Sdjr2Listener;
 
 /**
  * {@link FakerBeanConfig} class.
  * <p>/**
- * Java Faker External API.
+ * Config - Java Faker External API to initialized Users.
  *
  * @author jroldan
  * @version 1.0
  * @category Bean
  * @since 22/12/26
+ * @upgrade 22/12/26
  */
 @Configuration
 public class FakerBeanConfig {
 
-	@Bean
-	public Faker getFaker() {
-		return new Faker();
-	}
+    @Bean
+    Faker getFaker() {
+        return new Faker();
+    }
 
 }

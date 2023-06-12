@@ -11,7 +11,7 @@ import com.sdjr2.rest_sp5_ztoe.models.entities.UserEntity;
 /**
  * {@link UserRepository} class.
  * <p>
- * Interface for CRUD operations on a repository for a {@link UserEntity}.
+ * Repository - Interface for CRUD operations on a repository for a {@link UserEntity}.
  *
  * @author jroldan
  * @version 1.0

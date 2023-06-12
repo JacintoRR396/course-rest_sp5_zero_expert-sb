@@ -21,7 +21,7 @@ import com.sdjr2.rest_sp5_ztoe.repositories.UserRepository;
  * {@link MockService} class, it uses the repositories
  * {@link RoleRepository}, {@link UserRepository} and {@link UserInRoleRepository}.
  * <p>
- * Service that manages mock about Data.
+ * Service - Manages mock about Data.
  *
  * @author jroldan
  * @version 1.0

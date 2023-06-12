@@ -10,7 +10,7 @@ import org.springframework.security.access.prepost.PreAuthorize;
 /**
  * {@link SecurityRule} class.
  * <p>
- * Includes annotations about security rules in pre and post state.
+ * Rule - Includes annotations about security rules in pre and post state.
  *
  * @author jroldan
  * @version 1.0

@@ -7,7 +7,7 @@ import com.sdjr2.rest_sp5_ztoe.models.entities.RoleEntity;
 /**
  * {@link RoleRepository} class.
  * <p>
- * Interface for CRUD operations on a repository for a {@link RoleEntity}.
+ * Repository - Interface for CRUD operations on a repository JPA for a {@link RoleEntity}.
  *
  * @author jroldan
  * @version 1.0

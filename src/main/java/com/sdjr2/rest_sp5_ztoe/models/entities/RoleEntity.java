@@ -12,7 +12,7 @@ import jakarta.persistence.Table;
 /**
  * {@link RoleEntity} class.
  * <p>
- * Entity that represents a Role in the database.
+ * Entity - Represents a Role in the database.
  *
  * @author jroldan
  * @version 1.0

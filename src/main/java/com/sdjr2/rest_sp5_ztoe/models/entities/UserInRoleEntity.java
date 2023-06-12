@@ -14,7 +14,7 @@ import jakarta.persistence.Table;
 /**
  * {@link UserInRoleEntity} class.
  * <p>
- * Entity that represents a relationship between User and Role in the database.
+ * Entity - Represents a relationship between User and Role in the database.
  *
  * @author jroldan
  * @version 1.0
