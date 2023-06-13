@@ -7,6 +7,17 @@ import java.lang.annotation.Retention;
 import org.springframework.security.access.prepost.PostAuthorize;
 import org.springframework.security.access.prepost.PreAuthorize;
 
+/**
+ * {@link SecurityRule} class.
+ * <p>
+ * Rule - Includes annotations about security rules in pre and post state.
+ *
+ * @author jroldan
+ * @version 1.0
+ * @category Annotation
+ * @since 23/02/01
+ * @upgrade 23/02/01
+ */
 @Retention(RUNTIME)
 @PreAuthorize("hasRole('ROLE_USER') or hasRole('ROLE_ADMIN')")
 @PostAuthorize("hasRole('ROLE_ADMIN')")

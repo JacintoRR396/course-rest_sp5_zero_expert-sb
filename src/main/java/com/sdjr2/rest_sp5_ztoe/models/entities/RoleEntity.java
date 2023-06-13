@@ -1,4 +1,4 @@
-package com.sdjr2.rest_sp5_ztoe.entities;
+package com.sdjr2.rest_sp5_ztoe.models.entities;
 
 import java.io.Serializable;
 
@@ -7,44 +7,38 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
 /**
- * Entity that represents a relationship between User and Role in the database.
+ * {@link RoleEntity} class.
+ * <p>
+ * Entity - Represents a Role in the database.
  *
  * @author jroldan
  * @version 1.0
  * @category Entity
  * @since 22/12/26
- * @upgrade 23/01/26
+ * @upgrade 23/01/27
  */
 @Entity
-@Table(name = "users_in_roles")
-public class UserInRoleEntity implements Serializable {
+@Table(name = "roles")
+public class RoleEntity implements Serializable {
 
-	private static final long serialVersionUID = -6426077101670141136L;
+	private static final long serialVersionUID = -4460951672037170551L;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id")
 	private Integer id;
 
-	@ManyToOne
-	@JoinColumn(name = "user_id", referencedColumnName = "id")
-	private UserEntity user;
-
-	@ManyToOne
-	@JoinColumn(name = "role_id", referencedColumnName = "id")
-	private RoleEntity role;
+	@Column(name = "name")
+	private String name;
 	
-	public UserInRoleEntity() { }
+	public RoleEntity() { }
 
-	public UserInRoleEntity(UserEntity user, RoleEntity role) {
+	public RoleEntity(String name) {
 		super();
-		this.user = user;
-		this.role = role;
+		this.name = name;
 	}
 
 	public Integer getId() {
@@ -55,20 +49,12 @@ public class UserInRoleEntity implements Serializable {
 		this.id = id;
 	}
 
-	public UserEntity getUser() {
-		return this.user;
+	public String getName() {
+		return this.name;
 	}
 
-	public void setUser(final UserEntity user) {
-		this.user = user;
-	}
-
-	public RoleEntity getRole() {
-		return this.role;
-	}
-
-	public void setRole(final RoleEntity role) {
-		this.role = role;
+	public void setName(final String name) {
+		this.name = name;
 	}
 
 	@Override
@@ -90,7 +76,7 @@ public class UserInRoleEntity implements Serializable {
 		if (this.getClass() != obj.getClass()) {
 			return false;
 		}
-		final UserInRoleEntity other = (UserInRoleEntity) obj;
+		final RoleEntity other = (RoleEntity) obj;
 		if (this.id == null) {
 			if (other.id != null) {
 				return false;
@@ -103,7 +89,6 @@ public class UserInRoleEntity implements Serializable {
 
 	@Override
 	public String toString() {
-		return "UserInRoleEntity [id=" + id + ", user=" + user + ", role=" + role + "]";
+		return "RoleEntity [id=" + id + ", name=" + name + "]";
 	}
-
 }

@@ -7,12 +7,15 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 /**
- * Cache External API to manager caching.
+ * {@link CacheConfig} class.
+ * <p>
+ * Config - Cache External API to manager caching.
  *
  * @author jroldan
  * @version 1.0
- * @since 23/01/09
  * @category Bean
+ * @since 23/01/09
+ * @upgrade 23/01/09
  */
 @Configuration
 @EnableCaching

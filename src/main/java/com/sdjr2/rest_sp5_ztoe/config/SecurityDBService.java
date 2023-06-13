@@ -11,18 +11,21 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import com.sdjr2.rest_sp5_ztoe.entities.UserEntity;
-import com.sdjr2.rest_sp5_ztoe.entities.UserInRoleEntity;
+import com.sdjr2.rest_sp5_ztoe.models.entities.UserEntity;
+import com.sdjr2.rest_sp5_ztoe.models.entities.UserInRoleEntity;
 import com.sdjr2.rest_sp5_ztoe.repositories.UserInRoleRepository;
 import com.sdjr2.rest_sp5_ztoe.repositories.UserRepository;
 
 /**
- * Service Spring Security Internal to manager db security.
+ * {@link SecurityDBService} class.
+ * <p>
+ * Config - Service Spring Security Internal to manager db security.
  *
  * @author jroldan
  * @version 1.0
+ * @category Bean
  * @since 23/01/30
- * @category Service
+ * @upgrade 23/01/30
  */
 @Service
 public class SecurityDBService implements UserDetailsService {

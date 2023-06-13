@@ -13,11 +13,13 @@ import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
-import com.sdjr2.rest_sp5_ztoe.entities.UserEntity;
+import com.sdjr2.rest_sp5_ztoe.models.entities.UserEntity;
 import com.sdjr2.rest_sp5_ztoe.repositories.UserRepository;
 
 /**
- * Service that manages business logic about Users, it uses the repository
+ * {@link UserService} class.
+ * <p>
+ * Service - Manages business logic about Users, it uses the repository
  * {@link UserRepository}.
  * <p>
  * This Service maps the users of the database layer {@link UserEntity} to the

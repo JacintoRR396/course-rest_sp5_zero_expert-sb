@@ -5,13 +5,15 @@ import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
-import com.sdjr2.rest_sp5_ztoe.entities.ProfileEntity;
-import com.sdjr2.rest_sp5_ztoe.entities.UserEntity;
+import com.sdjr2.rest_sp5_ztoe.models.entities.ProfileEntity;
+import com.sdjr2.rest_sp5_ztoe.models.entities.UserEntity;
 import com.sdjr2.rest_sp5_ztoe.repositories.ProfileRepository;
 
 /**
- * Service that manages business logic about Profiles, it uses the repository
- * {@link ProfileRepository}.
+ * {@link ProfileService} class.
+ * <p>
+ * Service - Manages business logic about Profiles, it uses the repository
+ * {@link ProfileRepository} and the service {@link UserService}.
  * <p>
  * This Service maps the profiles of the database layer {@link ProfileEntity} to
  * the business logic layer and viceversa.
