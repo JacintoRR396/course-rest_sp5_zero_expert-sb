@@ -5,11 +5,13 @@ import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
-import com.sdjr2.rest_sp5_ztoe.entities.UserEntity;
-import com.sdjr2.rest_sp5_ztoe.entities.UserInRoleEntity;
+import com.sdjr2.rest_sp5_ztoe.models.entities.UserEntity;
+import com.sdjr2.rest_sp5_ztoe.models.entities.UserInRoleEntity;
 
 /**
- * Interface for CRUD operations on a repository for a {@link UserInRoleEntity}.
+ * {@link UserInRoleRepository} class.
+ * <p>
+ * Repository - Interface for CRUD operations on a repository JPA for a {@link UserInRoleEntity}.
  *
  * @author jroldan
  * @version 1.0

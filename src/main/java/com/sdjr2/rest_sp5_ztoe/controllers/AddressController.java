@@ -12,11 +12,15 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.sdjr2.rest_sp5_ztoe.entities.AddressEntity;
+import com.sdjr2.rest_sp5_ztoe.models.entities.AddressEntity;
 import com.sdjr2.rest_sp5_ztoe.services.AddressService;
 
 /**
- * Controller to manage Addresses of a Address, it uses the service {@link AddressService}.
+ * {@link AddressController} class.
+ * <p>
+ * Controller - Manage Addresses of a Profile {@link ProfileController}.
+ * <p>
+ * it uses the dto {@link AddressEntity} and the service {@link AddressService}.
  *
  * @author jroldan
  * @version 1.0

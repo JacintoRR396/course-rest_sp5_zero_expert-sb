@@ -18,12 +18,16 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.sdjr2.rest_sp5_ztoe.entities.RoleEntity;
-import com.sdjr2.rest_sp5_ztoe.entities.UserEntity;
+import com.sdjr2.rest_sp5_ztoe.models.entities.RoleEntity;
+import com.sdjr2.rest_sp5_ztoe.models.entities.UserEntity;
 import com.sdjr2.rest_sp5_ztoe.services.RoleService;
 
 /**
- * Controller to manage Roles, it uses the service {@link RoleService}.
+ * {@link RoleController} class.
+ * <p>
+ * Controller - Manage Roles that a User can have. 
+ * <p>
+ * it uses the dto {@link RoleEntity} and the service {@link RoleService}. 
  *
  * @author jroldan
  * @version 1.0
@@ -46,7 +50,7 @@ public class RoleController {
 		log.info( "Name {}", authentication.getName() );
 		log.info( "Principal {}", authentication.getPrincipal() );
 		log.info( "Credentials {}", authentication.getCredentials() );
-		log.info( "Roles {}", authentication.getAuthorities().toString() );
+		log.info( "Roles {}", authentication.getAuthorities() );
 		return new ResponseEntity<>(this.roleService.getRoles(), HttpStatus.OK);
 	}
 
@@ -56,7 +60,7 @@ public class RoleController {
 		log.info( "Name {}", authentication.getName() );
 		log.info( "Principal {}", authentication.getPrincipal() );
 		log.info( "Credentials {}", authentication.getCredentials() );
-		log.info( "Roles {}", authentication.getAuthorities().toString() );
+		log.info( "Roles {}", authentication.getAuthorities() );
 		return new ResponseEntity<>(this.roleService.getUsersByRole(roleName), HttpStatus.OK);
 	}
 

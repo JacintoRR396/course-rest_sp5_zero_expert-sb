@@ -1,4 +1,4 @@
-package com.sdjr2.rest_sp5_ztoe.entities;
+package com.sdjr2.rest_sp5_ztoe.models.entities;
 
 import java.io.Serializable;
 
@@ -12,7 +12,9 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
 /**
- * Entity that represents a Address in the database.
+ * {@link AddressEntity} class.
+ * <p>
+ * Entity - Represents a Address in the database.
  *
  * @author jroldan
  * @version 1.0

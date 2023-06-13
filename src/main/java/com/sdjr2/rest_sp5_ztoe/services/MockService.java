@@ -10,15 +10,18 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.github.javafaker.Faker;
-import com.sdjr2.rest_sp5_ztoe.entities.RoleEntity;
-import com.sdjr2.rest_sp5_ztoe.entities.UserEntity;
-import com.sdjr2.rest_sp5_ztoe.entities.UserInRoleEntity;
+import com.sdjr2.rest_sp5_ztoe.models.entities.RoleEntity;
+import com.sdjr2.rest_sp5_ztoe.models.entities.UserEntity;
+import com.sdjr2.rest_sp5_ztoe.models.entities.UserInRoleEntity;
 import com.sdjr2.rest_sp5_ztoe.repositories.RoleRepository;
 import com.sdjr2.rest_sp5_ztoe.repositories.UserInRoleRepository;
 import com.sdjr2.rest_sp5_ztoe.repositories.UserRepository;
 
 /**
- * Service that manages mock about Data.
+ * {@link MockService} class, it uses the repositories
+ * {@link RoleRepository}, {@link UserRepository} and {@link UserInRoleRepository}.
+ * <p>
+ * Service - Manages mock about Data.
  *
  * @author jroldan
  * @version 1.0

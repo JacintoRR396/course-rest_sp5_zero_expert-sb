@@ -1,4 +1,4 @@
-package com.sdjr2.rest_sp5_ztoe.entities;
+package com.sdjr2.rest_sp5_ztoe.models.entities;
 
 import java.io.Serializable;
 
@@ -10,33 +10,39 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
 /**
- * Entity that represents a Role in the database.
+ * {@link UserEntity} class.
+ * <p>
+ * Entity - Represents a User in the database.
  *
  * @author jroldan
  * @version 1.0
  * @category Entity
- * @since 22/12/26
+ * @since 22/12/27
  * @upgrade 23/01/27
  */
 @Entity
-@Table(name = "roles")
-public class RoleEntity implements Serializable {
+@Table(name = "users")
+public class UserEntity implements Serializable {
 
-	private static final long serialVersionUID = -4460951672037170551L;
+	private static final long serialVersionUID = -1327367545984759089L;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id")
 	private Integer id;
 
-	@Column(name = "name")
-	private String name;
-	
-	public RoleEntity() { }
+	@Column(name = "username")
+	private String username;
 
-	public RoleEntity(String name) {
+	@Column(name = "password")
+	private String password;
+
+	public UserEntity() { }
+
+	public UserEntity(String username, String password) {
 		super();
-		this.name = name;
+		this.username = username;
+		this.password = password;
 	}
 
 	public Integer getId() {
@@ -47,12 +53,20 @@ public class RoleEntity implements Serializable {
 		this.id = id;
 	}
 
-	public String getName() {
-		return this.name;
+	public String getUsername() {
+		return this.username;
 	}
 
-	public void setName(final String name) {
-		this.name = name;
+	public void setUsername(final String username) {
+		this.username = username;
+	}
+
+	public String getPassword() {
+		return this.password;
+	}
+
+	public void setPassword(final String password) {
+		this.password = password;
 	}
 
 	@Override
@@ -74,7 +88,7 @@ public class RoleEntity implements Serializable {
 		if (this.getClass() != obj.getClass()) {
 			return false;
 		}
-		final RoleEntity other = (RoleEntity) obj;
+		final UserEntity other = (UserEntity) obj;
 		if (this.id == null) {
 			if (other.id != null) {
 				return false;
@@ -87,6 +101,7 @@ public class RoleEntity implements Serializable {
 
 	@Override
 	public String toString() {
-		return "RoleEntity [id=" + id + ", name=" + name + "]";
+		return "UserEntity [id=" + id + ", username=" + username + ", password=" + password + "]";
 	}
+
 }
