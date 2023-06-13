@@ -22,7 +22,12 @@ public class Sdjr2Listener {
 
 	@KafkaListener(topics="sdjr2-topic", groupId="sdjr2Group")
 	public void listen( String msg ){
-		log.info( "Message received {}", msg );
+		log.info( "Message received :: code to post the message in the audit api : {}", msg );
+		try {
+			Thread.sleep(3000);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
 	}
 
 }
