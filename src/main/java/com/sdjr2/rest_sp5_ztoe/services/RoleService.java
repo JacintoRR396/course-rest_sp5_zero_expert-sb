@@ -7,10 +7,15 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.security.access.annotation.Secured;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.sdjr2.rest_sp5_ztoe.models.AuditDetails;
 import com.sdjr2.rest_sp5_ztoe.models.SecurityRule;
 import com.sdjr2.rest_sp5_ztoe.models.entities.RoleEntity;
 import com.sdjr2.rest_sp5_ztoe.models.entities.UserEntity;
@@ -42,6 +47,11 @@ public class RoleService {
 
 	@Autowired
 	private UserInRoleRepository userInRoleRepo;
+	
+	@Autowired
+	private KafkaTemplate<Integer, String> kafkaTemplate;
+	
+	private ObjectMapper objMapper = new ObjectMapper();
 
 	@SecurityRule
 	public List<RoleEntity> getRoles() {
@@ -64,8 +74,14 @@ public class RoleService {
 	}
 
 	public RoleEntity createRole(final RoleEntity role) {
-		// TODO management exception
-		return this.roleRepo.save(role);
+		RoleEntity roleDB = this.roleRepo.save(role);
+		AuditDetails auditDetails = new AuditDetails(SecurityContextHolder.getContext().getAuthentication().getName(), roleDB.getName());
+		try {
+			kafkaTemplate.send("sdjr2-topic", this.objMapper.writeValueAsString(auditDetails));
+		} catch (JsonProcessingException e) {
+			throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Error parsing the message");
+		}
+		return roleDB;
 	}
 
 	public RoleEntity updateRole(final Integer roleId, final RoleEntity role) {
